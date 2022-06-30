@@ -1,11 +1,11 @@
 ###
-# File: insertion.py
-# Description: Insertion sort 
+# File: selection.py
+# Description: Selection sort
 # Author: Bruno R. de Abreu  |  babreu at illinois dot edu
 # National Center for Supercomputing Applications (NCSA)
 #  
-# Creation Date: Tuesday, 28th June 2022, 3:01:29 pm
-# Last Modified: Thursday, 30th June 2022, 12:33:37 pm
+# Creation Date: Thursday, 30th June 2022, 12:20:13 pm
+# Last Modified: Thursday, 30th June 2022, 12:34:26 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -23,34 +23,6 @@
 #          the software and its usage.
 ###
 
-from auxiliaries.Sorter import Sorter
+from scalingExperiment.ScalingExperiment import ScalingExperimentResult
+import numpy as np
 
-class InsertionSorter(Sorter):
-    
-    def sortArray(self):
-        """
-        Sorts array using Insertion Sort
-        https://en.wikipedia.org/wiki/Insertion_sort
-
-        Returns:
-            - nSteps (int): total number of iterations to sort the array
-
-        Updates:
-            - self.output: the sorted array
-        """
-        if (self.arraySize == 0):
-            print("Please generate array!")
-            return 0
-        
-        nSteps = 0
-        self.output = self.input
-        for i in range(1, len(self.output), 1):
-            x = self.output[i]
-            j = i - 1
-            while j >= 0 and self.output[j] > x:
-                self.output[j+1] = self.output[j]
-                j = j - 1
-                nSteps = nSteps + 1
-            self.output[j+1] = x
-
-        return nSteps

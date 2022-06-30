@@ -1,4 +1,4 @@
-from ScalingExperiment import ScalingExperimentResult, ScalingExperimentSpec
+from auxiliaries.ScalingExperiment import ScalingExperimentSpec
 from insertion.insertion import InsertionSorter
 
 sorter = InsertionSorter()
