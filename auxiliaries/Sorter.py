@@ -5,7 +5,7 @@
 # National Center for Supercomputing Applications (NCSA)
 #  
 # Creation Date: Thursday, 30th June 2022, 12:22:30 pm
-# Last Modified: Thursday, 30th June 2022, 12:32:53 pm
+# Last Modified: Tuesday, 5th July 2022, 2:49:51 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -86,3 +86,12 @@ class Sorter:
             size = size * scalingExpSpec.sizeMultiplier
 
         return results
+
+    def checkSorting(self):
+        """
+        Checks to see if sorted array is sorted.
+        """
+        for i in range(self.arraySize-1):
+            if self.output[i] > self.output[i+1]:
+                return False
+        return True

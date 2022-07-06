@@ -5,7 +5,7 @@
 # National Center for Supercomputing Applications (NCSA)
 #  
 # Creation Date: Wednesday, 29th June 2022, 7:24:24 am
-# Last Modified: Wednesday, 29th June 2022, 7:49:41 am
+# Last Modified: Tuesday, 5th July 2022, 3:07:18 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -59,3 +59,12 @@ class ScalingExperimentResult:
         self.avgStd = np.zeros(scalingExpSpec.nSizes)
         finalSize = scalingExpSpec.initialSize * (scalingExpSpec.sizeMultiplier ** (scalingExpSpec.nSizes - 1)) 
         self.arraySizes = np.geomspace(scalingExpSpec.initialSize, finalSize, scalingExpSpec.nSizes)
+
+    def summarize(self):
+        """
+        Summarizes results.
+        """
+        print(f"Array sizes: {self.arraySizes}")
+        print(f"Average iterations: {self.avgAvg} +- {self.avgStd}")
+        print(f"Quickest iterations: {self.bestAvg} +- {self.bestStd}")
+        print(f"Slowest iterations: {self.worstAvg} +- {self.worstStd}")

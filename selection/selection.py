@@ -5,7 +5,7 @@
 # National Center for Supercomputing Applications (NCSA)
 #  
 # Creation Date: Thursday, 30th June 2022, 12:20:13 pm
-# Last Modified: Thursday, 30th June 2022, 12:34:26 pm
+# Last Modified: Thursday, 30th June 2022, 12:48:15 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -23,6 +23,38 @@
 #          the software and its usage.
 ###
 
-from scalingExperiment.ScalingExperiment import ScalingExperimentResult
-import numpy as np
+from auxiliaries.Sorter import Sorter
+
+class SelectionSorter(Sorter):
+
+    def sortArray(self):
+        """
+        Sorts array using Selection Sort
+        https://en.wikipedia.org/wiki/Selection_sort
+
+        Returns:
+            - nSteps (int): total number of iterations to sort the array
+
+        Updates:
+            - self.output: the sorted array
+        """
+        if (self.arraySize == 0):
+            print("Please generate array!")
+            return 0
+
+        nSteps = 0
+        self.output = self.input
+        for i in range(0, len(self.output)-1, 1):
+            jMin = i
+            # go over array and find the minimum
+            for j in range(i+1, len(self.output), 1):
+                if(self.input[j] < self.input[jMin]):
+                    jMin = j
+                nSteps = nSteps + 1
+            if (jMin != i):
+                self.output[i] = self.input[jMin]
+
+        return nSteps
+
+
 
