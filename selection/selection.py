@@ -5,7 +5,7 @@
 # National Center for Supercomputing Applications (NCSA)
 #  
 # Creation Date: Thursday, 30th June 2022, 12:20:13 pm
-# Last Modified: Thursday, 30th June 2022, 12:48:15 pm
+# Last Modified: Thursday, 7th July 2022, 2:41:11 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -33,16 +33,18 @@ class SelectionSorter(Sorter):
         https://en.wikipedia.org/wiki/Selection_sort
 
         Returns:
-            - nSteps (int): total number of iterations to sort the array
+            - time (float): elapsed time to sort the array
 
         Updates:
             - self.output: the sorted array
         """
+        import time
+
         if (self.arraySize == 0):
             print("Please generate array!")
             return 0
 
-        nSteps = 0
+        start = time.perf_counter()
         self.output = self.input
         for i in range(0, len(self.output)-1, 1):
             jMin = i
@@ -50,11 +52,11 @@ class SelectionSorter(Sorter):
             for j in range(i+1, len(self.output), 1):
                 if(self.input[j] < self.input[jMin]):
                     jMin = j
-                nSteps = nSteps + 1
             if (jMin != i):
                 self.output[i] = self.input[jMin]
+        stop = time.perf_counter()
 
-        return nSteps
+        return (stop-start)
 
 
 

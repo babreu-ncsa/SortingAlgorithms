@@ -5,7 +5,7 @@
 # National Center for Supercomputing Applications (NCSA)
 #  
 # Creation Date: Tuesday, 28th June 2022, 3:01:29 pm
-# Last Modified: Thursday, 30th June 2022, 12:33:37 pm
+# Last Modified: Thursday, 7th July 2022, 2:41:53 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -33,16 +33,18 @@ class InsertionSorter(Sorter):
         https://en.wikipedia.org/wiki/Insertion_sort
 
         Returns:
-            - nSteps (int): total number of iterations to sort the array
+            - time (float): elapsed time to sort the array
 
         Updates:
             - self.output: the sorted array
         """
+        import time
+
         if (self.arraySize == 0):
             print("Please generate array!")
             return 0
         
-        nSteps = 0
+        start = time.perf_counter()
         self.output = self.input
         for i in range(1, len(self.output), 1):
             x = self.output[i]
@@ -50,7 +52,7 @@ class InsertionSorter(Sorter):
             while j >= 0 and self.output[j] > x:
                 self.output[j+1] = self.output[j]
                 j = j - 1
-                nSteps = nSteps + 1
             self.output[j+1] = x
+        stop = time.perf_counter()
 
-        return nSteps
+        return (stop-start)

@@ -5,7 +5,7 @@
 # National Center for Supercomputing Applications (NCSA)
 #  
 # Creation Date: Wednesday, 29th June 2022, 7:24:24 am
-# Last Modified: Tuesday, 5th July 2022, 3:07:18 pm
+# Last Modified: Thursday, 7th July 2022, 2:09:56 pm
 #  
 # Copyright (c) 2022, Bruno R. de Abreu, National Center for Supercomputing Applications.
 # All rights reserved.
@@ -65,6 +65,6 @@ class ScalingExperimentResult:
         Summarizes results.
         """
         print(f"Array sizes: {self.arraySizes}")
-        print(f"Average iterations: {self.avgAvg} +- {self.avgStd}")
-        print(f"Quickest iterations: {self.bestAvg} +- {self.bestStd}")
-        print(f"Slowest iterations: {self.worstAvg} +- {self.worstStd}")
+        print(f"Average time: {self.avgAvg} +- {self.avgStd}")
+        print(f"Quickest time: {self.bestAvg} +- {self.bestStd}")
+        print(f"Slowest time: {self.worstAvg} +- {self.worstStd}")
