@@ -2,10 +2,11 @@ from auxiliaries.ScalingExperiment import ScalingExperimentSpec
 from insertion.insertion import InsertionSorter
 from selection.selection import SelectionSorter
 from merge.merge import MergeSorterTopDown
+from heap.heap import HeapSorter
 
 import matplotlib.pyplot as plt
 
-spec = ScalingExperimentSpec(8, 2, 2, 25, 10)
+spec = ScalingExperimentSpec(8, 2, 6, 25, 10)
 results = []
 
 print("Insertion Sort")
@@ -29,12 +30,19 @@ print(f"Array sorted? {mergeTopDownSorter.checkSorting()}")
 mergeTopDownResults.summarize()
 results.append([mergeTopDownResults, "Merge"])
 
-#plt.figure()
-#for result in results:
-#    plt.plot(result[0].arraySizes, result[0].avgAvg, label=result[1])
-#plt.xscale("log")
-#plt.yscale("log")
-#plt.legend()
-#plt.xlabel("Array size", fontsize=14)
-#plt.ylabel("Average time to sort", fontsize=14)
-#plt.show()
+print("\nHeap Sort")
+heapSorter = HeapSorter()
+heapResults = heapSorter.runScalingExperiment(spec)
+print(f"Array sorted? {heapSorter.checkSorting()}")
+heapResults.summarize()
+results.append([heapResults, "Heap"])
+
+plt.figure()
+for result in results:
+    plt.plot(result[0].arraySizes, result[0].avgAvg, label=result[1])
+plt.xscale("log")
+plt.yscale("log")
+plt.legend()
+plt.xlabel("Array size", fontsize=14)
+plt.ylabel("Average time to sort", fontsize=14)
+plt.show()
