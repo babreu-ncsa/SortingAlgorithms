@@ -4,10 +4,11 @@ from selection.selection import SelectionSorter
 from merge.merge import MergeSorterTopDown
 from heap.heap import HeapSorter
 from quick.quick import QuickSorter
+from bucket.bucket import BucketSorter
 
 import matplotlib.pyplot as plt
 
-spec = ScalingExperimentSpec(64, 2, 8, 10, 25)
+spec = ScalingExperimentSpec(64, 2, 1, 1, 1)
 results = []
 
 print("Insertion Sort")
@@ -44,6 +45,13 @@ quickResults = quickSorter.runScalingExperiment(spec)
 print(f"Array sorted? {quickSorter.checkSorting()}")
 quickResults.summarize()
 results.append([quickResults, "Quick"])
+
+print("\nBucket Sort")
+bucketSorter = BucketSorter()
+bucketResults = bucketSorter.runScalingExperiment(spec)
+print(f"Array sorted? {bucketSorter.checkSorting()}")
+bucketResults.summarize()
+results.append([bucketResults, "Bucket"])
 
 plt.figure()
 for result in results:
