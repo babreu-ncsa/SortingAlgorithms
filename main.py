@@ -3,10 +3,11 @@ from insertion.insertion import InsertionSorter
 from selection.selection import SelectionSorter
 from merge.merge import MergeSorterTopDown
 from heap.heap import HeapSorter
+from quick.quick import QuickSorter
 
 import matplotlib.pyplot as plt
 
-spec = ScalingExperimentSpec(8, 2, 6, 25, 10)
+spec = ScalingExperimentSpec(64, 2, 8, 10, 25)
 results = []
 
 print("Insertion Sort")
@@ -36,6 +37,13 @@ heapResults = heapSorter.runScalingExperiment(spec)
 print(f"Array sorted? {heapSorter.checkSorting()}")
 heapResults.summarize()
 results.append([heapResults, "Heap"])
+
+print("\nQuick Sort")
+quickSorter = QuickSorter()
+quickResults = quickSorter.runScalingExperiment(spec)
+print(f"Array sorted? {quickSorter.checkSorting()}")
+quickResults.summarize()
+results.append([quickResults, "Quick"])
 
 plt.figure()
 for result in results:
