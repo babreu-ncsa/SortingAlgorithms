@@ -8,7 +8,7 @@ from bucket.bucket import BucketSorter
 
 import matplotlib.pyplot as plt
 
-spec = ScalingExperimentSpec(64, 2, 1, 1, 1)
+spec = ScalingExperimentSpec(64, 2, 8, 10, 25)
 results = []
 
 print("Insertion Sort")
